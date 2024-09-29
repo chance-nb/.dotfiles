@@ -83,4 +83,6 @@ eval "$(zoxide init zsh)"
 alias cd=z
 alias cf=zi
 
+export EDITOR=nvim
+
 source ~/.zshrc-specific
