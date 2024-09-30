@@ -15,10 +15,13 @@ return {
 		config = function()
 			local sessions = require("mini.sessions")
 			sessions.setup({})
-			vim.keymap.set("n", "<leader>s", function()
+			vim.keymap.set("n", "<leader>ss", function()
 				local name = vim.fn.input("Save session as: ")
 				sessions.write(name)
 			end, { desc = "save session" })
+			vim.keymap.set("n", "<leader>sl", function()
+				sessions.select("read")
+			end, { desc = "select session to load" })
 		end,
 	},
 

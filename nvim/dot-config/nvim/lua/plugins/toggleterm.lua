@@ -2,6 +2,8 @@ return {
 	"akinsho/toggleterm.nvim",
 	opts = {
 		open_mapping = "<C-t>",
+		autochdir = true,
+
 		size = function(term)
 			if term.direction == "horizontal" then
 				return 15
