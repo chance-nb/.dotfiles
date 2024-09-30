@@ -1,6 +1,7 @@
 -- press gc to comment out/in
 return {
 	"numToStr/Comment.nvim",
+	version = "*",
 	opts = {
 		---Add a space b/w comment and the line
 		padding = true,

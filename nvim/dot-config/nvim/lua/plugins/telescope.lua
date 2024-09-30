@@ -2,7 +2,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		version = "*",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -17,6 +17,7 @@ return {
 
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
+		version = "*",
 		config = function()
 			require("telescope").setup({
 				extensions = {
@@ -32,6 +33,7 @@ return {
 	},
 	{
 		"slotos/telescope-lsp-handlers.nvim",
+		version = "*",
 		opts = {},
 	},
 }

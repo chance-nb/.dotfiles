@@ -1,20 +1,22 @@
 return {
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
-	{ "hrsh7th/cmp-cmdline" },
+	{ "hrsh7th/cmp-nvim-lsp", version = "*" },
+	{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
+	{ "hrsh7th/cmp-buffer", version = "*" },
+	{ "hrsh7th/cmp-path", version = "*" },
+	{ "hrsh7th/cmp-cmdline", version = "*" },
 
 	{
 		"L3MONA4D3/LuaSnip",
+		version = "*",
 		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
+			{ "saadparwaiz1/cmp_luasnip", version = "*" },
+			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 	},
 
 	{
 		"hrsh7th/nvim-cmp",
+		version = "*",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load() -- technically part of LuaSnip setup but it's convenient here
@@ -38,7 +40,7 @@ return {
 					entries = { name = "custom", selection_order = "near_cursor" },
 				},
 
----@diagnostic disable-next-line: missing-fields
+				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					format = lspkind.cmp_format({
 						-- mode = "symbol",
@@ -92,7 +94,6 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
-
 			})
 
 			-- Use buffer source for `/` and `?`

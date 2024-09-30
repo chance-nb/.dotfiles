@@ -3,12 +3,14 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		version = "*",
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		version = "*",
 		config = function()
 			require("mason-lspconfig").setup()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()

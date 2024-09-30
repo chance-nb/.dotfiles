@@ -1,6 +1,7 @@
 return {
 	{
 		"echasnovski/mini.surround",
+		version = "*",
 		opts = {
 			n_lines = 500,
 		},
@@ -8,6 +9,7 @@ return {
 
 	{
 		"echasnovski/mini.sessions",
+		version = "*",
 		config = function()
 			local sessions = require("mini.sessions")
 			sessions.setup({})
@@ -20,6 +22,7 @@ return {
 
 	{
 		"echasnovski/mini.move",
+		version = "*",
 		opts = {
 			mappings = {
 				-- Move visual selection in Visual mode
@@ -37,10 +40,15 @@ return {
 		},
 	},
 
-	{ "echasnovski/mini.cursorword", opts = {} },
+	{
+		"echasnovski/mini.cursorword",
+		opts = {},
+		version = "*",
+	},
 
 	{
 		"echasnovski/mini.indentscope",
+		version = "*",
 		config = function()
 			local indentscope = require("mini.indentscope")
 			indentscope.setup({
@@ -57,6 +65,7 @@ return {
 
 	{
 		"echasnovski/mini.jump",
+		version = "*",
 		config = function()
 			require("mini.jump").setup()
 			-- Link the MiniJump highlight group to the Search highlight group
@@ -64,15 +73,15 @@ return {
 		end,
 	},
 
-	{ "echasnovski/mini.animate", opts = {} },
+	{ "echasnovski/mini.animate", version = "*", opts = {} },
 
-	{ "echasnovski/mini.icons", opts = {} },
+	{ "echasnovski/mini.icons", version = "*", opts = {} },
 
-	{ "echasnovski/mini.tabline", opts = {} },
+	{ "echasnovski/mini.tabline", version = "*", opts = {} },
 
-	{ "echasnovski/mini.starter", opts = {} },
+	{ "echasnovski/mini.starter", version = "*", opts = {} },
 
-	{ "echasnovski/mini.pairs", opts = {} },
+	{ "echasnovski/mini.pairs", version = "*", opts = {} },
 
-	{ "echasnovski/mini.bracketed", opts = {} },
+	{ "echasnovski/mini.bracketed", version = "*", opts = {} },
 }

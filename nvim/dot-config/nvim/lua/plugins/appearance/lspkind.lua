@@ -1,4 +1,5 @@
 return {
-  "onsails/lspkind.nvim",
-  opts = {},
+	"onsails/lspkind.nvim",
+	version = "*",
+	opts = {},
 }
