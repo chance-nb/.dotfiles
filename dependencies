@@ -1,0 +1,8 @@
+zsh:
+zsh starship fzf zoxide
+
+nvim:
+nvim
+
+git:
+git
