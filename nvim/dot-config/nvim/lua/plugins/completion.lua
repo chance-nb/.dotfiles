@@ -6,7 +6,7 @@ return {
 	{ "hrsh7th/cmp-cmdline", version = "*" },
 
 	{
-		"L3MONA4D3/LuaSnip",
+		"L3MON4D3/LuaSnip",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
