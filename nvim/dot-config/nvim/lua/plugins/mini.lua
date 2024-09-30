@@ -1,6 +1,7 @@
 return {
 	{
 		"echasnovski/mini.surround",
+		event = "BufEnter",
 		version = "*",
 		opts = {
 			n_lines = 500,
@@ -9,6 +10,7 @@ return {
 
 	{
 		"echasnovski/mini.sessions",
+		event = "BufEnter",
 		version = "*",
 		config = function()
 			local sessions = require("mini.sessions")
@@ -22,6 +24,7 @@ return {
 
 	{
 		"echasnovski/mini.move",
+		event = "BufEnter",
 		version = "*",
 		opts = {
 			mappings = {
@@ -42,12 +45,14 @@ return {
 
 	{
 		"echasnovski/mini.cursorword",
+		event = "BufEnter",
 		opts = {},
 		version = "*",
 	},
 
 	{
 		"echasnovski/mini.indentscope",
+		event = "BufEnter",
 		version = "*",
 		config = function()
 			local indentscope = require("mini.indentscope")
@@ -65,6 +70,7 @@ return {
 
 	{
 		"echasnovski/mini.jump",
+		event = "BufEnter",
 		version = "*",
 		config = function()
 			require("mini.jump").setup()
@@ -81,7 +87,7 @@ return {
 
 	{ "echasnovski/mini.starter", version = "*", opts = {} },
 
-	{ "echasnovski/mini.pairs", version = "*", opts = {} },
+	{ "echasnovski/mini.pairs", event = "BufEnter", version = "*", opts = {} },
 
 	{ "echasnovski/mini.bracketed", version = "*", opts = {} },
 }

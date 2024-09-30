@@ -1,12 +1,7 @@
 return {
-	{ "hrsh7th/cmp-nvim-lsp", version = "*" },
-	{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
-	{ "hrsh7th/cmp-buffer", version = "*" },
-	{ "hrsh7th/cmp-path", version = "*" },
-	{ "hrsh7th/cmp-cmdline", version = "*" },
-
 	{
 		"L3MON4D3/LuaSnip",
+		event = "BufEnter",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
@@ -15,8 +10,15 @@ return {
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		version = "*",
+		"hrsh7th/nvim-cmp", -- using newest version since latest stable uses deprecated functions
+		dependencies = {
+			{ "hrsh7th/cmp-nvim-lsp", version = "*" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
+			{ "hrsh7th/cmp-buffer", version = "*" },
+			{ "hrsh7th/cmp-path", version = "*" },
+			{ "hrsh7th/cmp-cmdline", version = "*" },
+			{ "onsails/lspkind.nvim", version = "*" },
+		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load() -- technically part of LuaSnip setup but it's convenient here

@@ -1,7 +1,7 @@
 return {
 	"folke/which-key.nvim",
 	version = "*",
-	event = "VimEnter", -- Sets the loading event to 'VimEnter'
+	event = "VimEnter",
 	config = function()
 		require("which-key").setup()
 	end,

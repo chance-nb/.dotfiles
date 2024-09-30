@@ -1,5 +1,6 @@
 return {
   "nvimtools/none-ls.nvim",
+	event = "VimEnter",
   config = function()
     local null_ls = require("null-ls")
 

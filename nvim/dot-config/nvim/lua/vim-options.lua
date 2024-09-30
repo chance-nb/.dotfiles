@@ -8,6 +8,7 @@ vim.cmd("set shiftwidth=2")
 
 -- leader key
 vim.g.mapleader = " "
+vim.g.maplocaleader = " "
 
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
