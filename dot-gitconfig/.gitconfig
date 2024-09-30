@@ -9,3 +9,5 @@
 	email = 96649398+chance-nb@users.noreply.github.com
 [init]
 	defaultBranch = main
+[advice]
+	addIgnoredFile = false
