@@ -98,7 +98,7 @@ behind = '⇣${count}'
 conflicted = "=${count}"
 untracked = "?${count}"
 stashed = "\\$${count}"
-modified = "!${count}"
+modified = "${count}"
 staged = "+${count}"
 renamed = "»${count}"
 deleted = "✘${count}"
