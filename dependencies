@@ -1,5 +1,5 @@
 zsh:
-zsh starship fzf zoxide
+zsh starship fzf zoxide gcc eza
 
 nvim:
 nvim

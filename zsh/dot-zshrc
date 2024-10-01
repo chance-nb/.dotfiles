@@ -52,7 +52,31 @@ setopt hist_find_no_dups
 
 alias vi=nvim
 alias vim=nvim
+alias prflag=cli-pride-flags
+alias mewo=nyancat
+alias neofetch=fastfetch
 
+# Helpful aliases
+alias c='clear' # clear terminal
+alias l='eza -lh --icons=auto' # long list
+alias ls='eza -1 --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
+alias un='yay -Rns' # uninstall package
+alias up='yay -Syu' # update system/package/aur
+alias pl='yay -Qs' # list installed package
+alias pa='yay -Ss' # list available package
+alias pc='yay -Sc' # remove unused cache
+alias po='yay -Qtdq | yay -Rns -' # remove unused packages, also try > yay -Qqd | yay -Rsu --print -
+alias dir='dir --color=auto -F'
+alias vdir='vdir --color=auto -F'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias updateall=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
+alias gs="git status"
 
 # Completion Styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -69,6 +93,5 @@ alias cf=zi
 
 export EDITOR=nvim
 
-source ~/.zshrc-specific
 
 eval "$(starship init zsh)"
