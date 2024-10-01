@@ -6,3 +6,6 @@ nvim
 
 git:
 git
+
+hyprland:
+dunst waybar pipewire wireplumber polkit-kde-agent qt6-wayland qt5-wayland

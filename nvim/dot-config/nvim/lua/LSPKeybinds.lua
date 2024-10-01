@@ -13,8 +13,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "show hover information" })
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "[r]e[n]ame" })
 		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "[c]ode [a]ction" })
-		vim.keymap.set("n", "<leader>fr", function()
-			vim.lsp.buf.format({ async = true })
-		end, { buffer = ev.buf, desc = "[f]o[r]mat" })
 	end,
 })

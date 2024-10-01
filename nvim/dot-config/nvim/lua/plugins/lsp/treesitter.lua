@@ -4,9 +4,9 @@ return {
 	event = "BufEnter",
 	build = ":TSUpdate",
 	config = function()
----@diagnostic disable-next-line: missing-fields
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "lua", "python", "bash" },
+			ensure_installed = { "lua", "python", "bash", "hyprlang" },
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
