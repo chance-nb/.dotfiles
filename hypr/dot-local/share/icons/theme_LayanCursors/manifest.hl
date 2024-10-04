@@ -1,0 +1,4 @@
+name = LayanCursors
+description = Layan Cursors, see https://github.com/vinceliuice/Layan-cursors/ made into hyprcursor via hyprcursor-util
+version = 0.1
+cursors_directory = hyprcursors

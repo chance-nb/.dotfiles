@@ -2,10 +2,19 @@ zsh:
 zsh starship fzf zoxide gcc eza
 
 nvim:
-nvim
+nvim unzip npm gcc
 
 git:
 git
 
-hyprland:
-dunst waybar pipewire wireplumber polkit-kde-agent qt6-wayland qt5-wayland
+kitty:
+ttf-jetbrains-mono-nerd
+
+hyprland: -----------------------------------------------------------------------
+dunst waybar pipewire wireplumber polkit-kde-agent qt6-wayland qt5-wayland greetd regreet cage
+noto-ttf xdg-desktop-portal-hyprland kitty
+wofi
+
+for layancursors in gtk:
+layan-cursor-theme-git
+nwg-look (general gtk configuration)

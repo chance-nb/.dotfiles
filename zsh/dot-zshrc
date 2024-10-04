@@ -92,5 +92,4 @@ alias cf=zi
 
 export EDITOR=nvim
 
-
 eval "$(starship init zsh)"
