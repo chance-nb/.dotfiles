@@ -68,6 +68,16 @@ alias pl='yay -Qs' # list installed package
 alias pa='yay -Ss' # list available package
 alias pc='yay -Sc' # remove unused cache
 alias po='yay -Qtdq | yay -Rns -' # remove unused packages, also try > yay -Qqd | yay -Rsu --print -
+
+alias ua-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
+alias update-with-mirrors='export TMPFILE="$(mktemp)"; \
+    sudo true; \
+		rate-mirrors --save=$TMPFILE $(awk -F= '\''/^ID=/ {print $2}'\'' /etc/os-release) --max-delay=21600 \
+      && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+      && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+      && ua-drop-caches \
+      && yay -Syyu --noconfirm'
+
 alias dir='dir --color=auto -F'
 alias vdir='vdir --color=auto -F'
 alias grep='grep --color=auto'
