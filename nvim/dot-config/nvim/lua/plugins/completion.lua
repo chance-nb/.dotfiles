@@ -1,7 +1,7 @@
 return {
 	{
 		"L3MON4D3/LuaSnip",
-		event = "BufEnter",
+		-- event = "BufEnter",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
