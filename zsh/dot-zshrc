@@ -50,6 +50,12 @@ setopt hist_find_no_dups
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
+mkcd ()  {
+	mkdir -p $1
+	cd $1
+}
+
+
 alias vi=nvim
 alias vim=nvim
 alias prflag=cli-pride-flags
@@ -84,6 +90,8 @@ alias grep='grep --color=auto'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ua=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
 alias gs="git status"
+
+alias gor="go run ."
 
 # Completion Styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

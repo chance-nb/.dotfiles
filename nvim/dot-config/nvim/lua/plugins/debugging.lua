@@ -14,14 +14,39 @@ return {
 
 			require("dap-go").setup()
 
-			vim.keymap.set("n", "<F5>", function()
+			vim.keymap.set("n", "<f5>", function()
 				dap.continue()
-			end, { desc = "Debug: continue" })
+			end, { desc = "debug: continue" })
 
-			vim.keymap.set("n", "<Leader>db", function()
+			vim.keymap.set("n", "<leader>db", function()
 				dap.toggle_breakpoint()
-			end, { desc = "Debug: toggle breakpoint" })
+			end, { desc = "debug: toggle breakpoint" })
 
+			vim.keymap.set("n", "<leader>dlp", function()
+				dap.set_breakpoint(nil, nil, vim.fn.input("log point message: "))
+			end, { desc = "debug: set breakpoint with log message" })
+
+			vim.keymap.set("n", "<f10>", function()
+				dap.step_over()
+			end, { desc = "debug: step over" })
+
+			vim.keymap.set("n", "<f11>", function()
+				dap.step_into()
+			end, { desc = "debug: step into" })
+
+			vim.keymap.set("n", "<f12>", function()
+				dap.step_out()
+			end, { desc = "debug: step out" })
+
+			vim.keymap.set("n", "<leader>duo", function()
+				dapui.open()
+			end, { desc = "debug: open ui" })
+
+			vim.keymap.set("n", "<leader>duc", function()
+				dapui.close()
+			end, { desc = "debug: close ui" })
+
+			-- setup dapui hooks
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
@@ -34,50 +59,6 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
-
-			-- vim.keymap.set("n", "<F10>", function()
-			-- 	dap.step_over()
-			-- end, { desc = "Debug: step over" })
-			--
-			-- vim.keymap.set("n", "<F11>", function()
-			-- 	dap.step_into()
-			-- end, { desc = "Debug: step into" })
-			--
-			-- vim.keymap.set("n", "<F12>", function()
-			-- 	dap.step_out()
-			-- end, { desc = "Debug: step out" })
-
-			-- vim.keymap.set("n", "<Leader>dB", function()
-			-- 	dap.set_breakpoint()
-			-- end, { desc = "Debug: set breakpoint" })
-			--
-			-- vim.keymap.set("n", "<Leader>dlp", function()
-			-- 	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-			-- end, { desc = "Debug: set breakpoint with log message" })
-			--
-			-- vim.keymap.set("n", "<Leader>dr", function()
-			-- 	dap.repl.open()
-			-- end, { desc = "Debug: repl.open" })
-			--
-			-- vim.keymap.set("n", "<Leader>dl", function()
-			-- 	dap.run_last()
-			-- end, { desc = "Debug: run last" })
-			--
-			-- vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-			-- 	widgets.hover()
-			-- end, { desc = "Debug: hover" })
-			--
-			-- vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-			-- 	widgets.preview()
-			-- end, { desc = "Debug: preview" })
-			--
-			-- vim.keymap.set("n", "<Leader>df", function()
-			-- 	widgets.centered_float(widgets.frames)
-			-- end, { desc = "Debug: show frames" })
-			--
-			-- vim.keymap.set("n", "<Leader>ds", function()
-			-- 	widgets.centered_float(widgets.scopes)
-			-- end, { desc = "Debug: show scopes" })
 		end,
 	},
 }

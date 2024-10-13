@@ -9,6 +9,7 @@ return {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.black,
+				null_ls.builtins.formatting.goimports
 			},
 			vim.keymap.set("n", "<leader>fr", function()
 				vim.lsp.buf.format({ async = true })
