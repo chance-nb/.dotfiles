@@ -78,7 +78,7 @@ alias po='yay -Qtdq | yay -Rns -' # remove unused packages, also try > yay -Qqd 
 alias ua-drop-caches='sudo paccache -rk3; yay -Sc --aur --noconfirm'
 alias update-with-mirrors='export TMPFILE="$(mktemp)"; \
     sudo true; \
-		rate-mirrors --save=$TMPFILE $(awk -F= '\''/^ID=/ {print $2}'\'' /etc/os-release) --max-delay=21600 \
+		rate-mirrors --save=$TMPFILE arch \
       && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && ua-drop-caches \
