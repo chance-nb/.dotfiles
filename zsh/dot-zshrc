@@ -108,4 +108,5 @@ alias cf=zi
 
 export EDITOR=nvim
 
+cli-pride-flags -r -p --use-flag-height
 eval "$(starship init zsh)"
