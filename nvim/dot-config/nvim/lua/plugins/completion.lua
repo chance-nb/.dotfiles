@@ -1,12 +1,15 @@
 return {
 	{
 		"L3MON4D3/LuaSnip",
-		-- event = "BufEnter",
+		event = "BufEnter",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load() -- technically part of LuaSnip setup but it's convenient here
+		end,
 	},
 
 	{
@@ -21,8 +24,6 @@ return {
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load() -- technically part of LuaSnip setup but it's convenient here
-
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
