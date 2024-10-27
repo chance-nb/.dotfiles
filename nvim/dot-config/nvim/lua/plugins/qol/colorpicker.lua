@@ -12,5 +12,6 @@ return {
 				lsp = true,
 			},
 		})
+		vim.keymap.set("n", "<leader>cp", ":CccPick<CR>")
 	end,
 }
