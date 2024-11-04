@@ -29,3 +29,4 @@ require("lazy").setup({
 })
 require("LSPKeybinds")
 require("manuallspconfigs")
+require("manim")
