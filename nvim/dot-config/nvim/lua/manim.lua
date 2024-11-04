@@ -43,4 +43,3 @@ end
 vim.keymap.set("n", "<leader>mr", runmanim, {
 	desc = "Runs manim with the current buffer's filename and class the cursor is in. Ensure your file is in your cwd.",
 })
--- TODO make files outside cwd work (js realpath -s filename (?))
