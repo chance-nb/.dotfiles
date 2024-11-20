@@ -1,9 +1,9 @@
 if ! [ -v ZELLIJ ]; then
-ZJ_SESSIONS=$(zellij list-sessions)
+ZJ_SESSIONS=$(zellij list-sessions -s)
 NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l)
 if [ "${NO_SESSIONS}" -ge 2 ]; then
     zellij attach \
-    "$(echo "${ZJ_SESSIONS}" | fzf)"
+    "$(echo $ZJ_SESSIONS | fzf | cut -d'[' -f1)"
 else
    zellij attach -c
 fi
@@ -81,6 +81,7 @@ alias ls='eza --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
+alias zj='zellij'
 alias un='yay -Rns' # uninstall package
 alias up='yay -Syu' # update system/package/aur
 alias pl='yay -Qs' # list installed package
@@ -114,6 +115,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
+eval $(zellij setup --generate-completion zsh)
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 alias cd=z
