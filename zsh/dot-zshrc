@@ -1,9 +1,17 @@
 if ! [ -v ZELLIJ ]; then
-ZJ_SESSIONS=$(zellij list-sessions -s)
-NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l)
-if [ "${NO_SESSIONS}" -ge 2 ]; then
-    zellij attach \
-    "$(echo $ZJ_SESSIONS | fzf | cut -d'[' -f1)"
+ZJ_SESSIONS=$(zellij list-sessions -n) # get unformated session name
+NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l) # count number of sessions
+if [ "${NO_SESSIONS}" -ge 2 ]; then # if more than one session
+    # fzf session name
+    session_name="$(echo $ZJ_SESSIONS "\nCreate new Session" | fzf | sed 's/ \[.*//')"
+    # check if create new session was selected, if yes, input name
+    if [[ "$session_name" == "Create new Session" ]]; then
+	echo "Input session name: "
+	read -r session_name
+	session_name="--create $session_name"
+	echo $session_name
+    fi
+    eval "zellij attach $session_name" # eval workaround because just supplying $session name doesn't work with create ¯\_(ツ)_/¯
 else
    zellij attach -c
 fi
@@ -82,6 +90,11 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long li
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
 alias zj='zellij'
+alias ze='zellij edit'
+alias zr='zellij run --'
+alias zrf='zellij run --floating --'
+alias zrc='zellij run --close-on-exit --'
+alias zrfc='zellij run --close-on-exit --floating --'
 alias un='yay -Rns' # uninstall package
 alias up='yay -Syu' # update system/package/aur
 alias pl='yay -Qs' # list installed package
