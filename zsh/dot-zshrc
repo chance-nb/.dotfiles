@@ -1,3 +1,14 @@
+if ! [ -v ZELLIJ ]; then
+ZJ_SESSIONS=$(zellij list-sessions)
+NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l)
+if [ "${NO_SESSIONS}" -ge 2 ]; then
+    zellij attach \
+    "$(echo "${ZJ_SESSIONS}" | fzf)"
+else
+   zellij attach -c
+fi
+fi
+
 # Set plugin and zinit Directory
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -56,9 +67,11 @@ mkcd ()  {
 }
 
 
+alias v=nvim
 alias vi=nvim
 alias vim=nvim
 alias prflag=cli-pride-flags
+alias ":3"="nyancat && cli-pride-flags trans --use-flag-height && echo :3"
 alias mewo=nyancat
 alias neofetch=fastfetch
 
@@ -107,6 +120,8 @@ alias cd=z
 alias cf=zi
 
 export EDITOR=nvim
+export PATH=$PATH:/home/chance/.spicetify
 
 cli-pride-flags -r -p --use-flag-height
 eval "$(starship init zsh)"
+
