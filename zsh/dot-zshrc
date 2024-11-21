@@ -8,10 +8,9 @@ if [ "${NO_SESSIONS}" -ge 2 ]; then # if more than one session
     if [[ "$session_name" == "Create new Session" ]]; then
 	echo "Input session name: "
 	read -r session_name
-	session_name="--create $session_name"
-	echo $session_name
+	session_name="--create '$session_name'"
     fi
-    eval "zellij attach $session_name" # eval workaround because just supplying $session name doesn't work with create ¯\_(ツ)_/¯
+    eval "zellij attach '$session_name'" # eval workaround because just supplying $session name doesn't work with create ¯\_(ツ)_/¯
 else
    zellij attach -c
 fi
