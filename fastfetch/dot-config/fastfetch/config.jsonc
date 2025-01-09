@@ -6,32 +6,105 @@
     "color": {
       "1": "38;2;91;206;250",
       "2": "38;2;245;169;184",
-      "3": "38;2;255;255;255"
-    }
+      "3": "38;2;255;255;255",
+    },
   },
   "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "packages",
-    "shell",
-    "display",
-    "de",
-    "font",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "disk",
-    "battery",
-    "poweradapter",
-    "locale",
+    {
+      "type": "custom",
+      "format": "\u001b[36m  System",
+    },
+    {
+      "type": "custom",
+      "format": "┌────────────────────────────────────────────────────┐",
+    },
+    {
+      "type": "os",
+      "key": "   OS",
+      "keyColor": "red",
+    },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "keyColor": "red",
+    },
+    {
+      "type": "packages",
+      "key": "  󰏓 Packages",
+      "keyColor": "green",
+      "format": "{1}: {5} rpm, {14} flatpak, {17} brew"
+    },
+    {
+      "type": "display",
+      "key": "  󰍹 Display",
+      "keyColor": "green",
+    },
+    {
+      "type": "wm",
+      "key": "   WM",
+      "keyColor": "yellow",
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "yellow",
+    },
+    {
+      "type": "shell",
+      "key": "   Shell",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "custom",
+      "format": "└─────────────────────────────────────────────────────┘",
+    },
     "break",
-    "colors"
-  ]
+    {
+      "type": "title",
+      "key": " ",
+      "keyColor": "36;2;36:",
+      "format": "\u001b[36m{1}\u001b[39m@\u001b[36m{2}"
+    },
+    {
+      "type": "custom",
+      "format": "┌─────────────────────────────────────────────────────┐",
+    },
+    {
+      "type": "cpu",
+      "format": "{1}",
+      "key": "   CPU",
+      "keyColor": "blue",
+    },
+    {
+      "type": "gpu",
+      "key": "   GPU",
+      "keyColor": "blue",
+    },
+    {
+      "type": "memory",
+      "key": "  󰍛 Memory",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "disk",
+      "key": "   Disk",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "battery",
+      "key": "  󰁹 Battery",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "└─────────────────────────────────────────────────────┘",
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle",
+    },
+    "break",
+  ],
 }
