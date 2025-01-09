@@ -60,7 +60,9 @@ if status is-interactive
 
     abbr -a v nvim
 
+    abbr -a ic kitty icat
+
     set -q KITTY_PID
     and fastfetch
 end
-
+set -gx LC_ALL "en_GB.UTF-8"
