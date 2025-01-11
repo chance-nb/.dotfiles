@@ -37,7 +37,7 @@ if status is-interactive
     alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
     alias ua=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
 
-    abbr -a c clear
+    abbr -a c "clear && fastfetch"
 
     abbr -a lg lazygit
     abbr -a gs git status
@@ -62,7 +62,12 @@ if status is-interactive
 
     abbr -a ic kitty icat
 
+    abbr --set-cursor -a cg "cd ~/.config/%"
+    abbr --set-cursor -a ce "nvim ~/.config/%"
+
     set -q KITTY_PID
     and fastfetch
 end
 set -gx LC_ALL "en_GB.UTF-8"
+
+fish_add_path /home/astrid/.spicetify
