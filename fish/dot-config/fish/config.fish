@@ -34,7 +34,7 @@ if status is-interactive
 
     alias dir='dir --color=auto -F'
     alias grep='grep --color=auto'
-    alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+    alias update-grub='sudo grub2-mkconfig -o /boot/grub/grub.cfg'
     alias ua=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
 
     abbr -a c "clear && fastfetch"
