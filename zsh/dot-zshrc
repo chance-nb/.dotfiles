@@ -1,20 +1,23 @@
-if ! [ -v ZELLIJ ]; then
-ZJ_SESSIONS=$(zellij list-sessions -n) # get unformated session name
-NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l) # count number of sessions
-if [ "${NO_SESSIONS}" -ge 2 ]; then # if more than one session
-    # fzf session name
-    session_name="$(echo $ZJ_SESSIONS "\nCreate new Session" | fzf | sed 's/ \[.*//')"
-    # check if create new session was selected, if yes, input name
-    if [[ "$session_name" == "Create new Session" ]]; then
-	echo "Input session name: "
-	read -r session_name
-	session_name="--create '$session_name'"
-    fi
-    eval "zellij attach '$session_name'" # eval workaround because just supplying $session name doesn't work with create ¯\_(ツ)_/¯
-else
-   zellij attach -c
-fi
-fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+PATH=$PATH:~/.cargo/bin
+
+# if ! [ -v ZELLIJ ]; then
+# ZJ_SESSIONS=$(zellij list-sessions -n) # get unformated session name
+# NO_SESSIONS=$(echo "${ZJ_SESSIONS}" | wc -l) # count number of sessions
+# if [ "${NO_SESSIONS}" -ge 2 ]; then # if more than one session
+#     # fzf session name
+#     session_name="$(echo $ZJ_SESSIONS "\nCreate new Session" | fzf | sed 's/ \[.*//')"
+#     # check if create new session was selected, if yes, input name
+#     if [[ "$session_name" == "Create new Session" ]]; then
+# 	echo "Input session name: "
+# 	read -r session_name
+# 	session_name="--create '$session_name'"
+#     fi
+#     eval "zellij attach '$session_name'" # eval workaround because just supplying $session name doesn't work with create ¯\_(ツ)_/¯
+# else
+#    zellij attach -c
+# fi
+# fi
 
 # Set plugin and zinit Directory
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -116,6 +119,7 @@ alias grep='grep --color=auto'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ua=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
 alias gs="git status"
+alias lg='lazygit'
 
 alias gor="go run ."
 
@@ -139,3 +143,5 @@ export PATH=$PATH:/home/chance/.spicetify
 cli-pride-flags -r -p --use-flag-height
 eval "$(starship init zsh)"
 
+
+export PATH=$PATH:/home/astrid/.spicetify
