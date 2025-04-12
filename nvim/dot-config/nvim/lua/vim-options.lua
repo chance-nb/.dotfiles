@@ -13,7 +13,11 @@ vim.g.maplocaleader = " "
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 -- - Paste in Visual with `P` to not copy selected text (`:h v_P`)
-map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
+map("x", "gP", '"+P', { desc = "Paste from system clipboard" })
+
+map("n", "yp", '"0p', { desc = "Put from first yank buffer" })
+
+map("n", "se", "mZ$a;<Esc>`Z", { desc = "Add semicolon at end of line" })
 
 -- line numbers
 opt.number = true

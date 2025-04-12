@@ -9,7 +9,6 @@ return {
 			"black",
 			"bashls",
 			"beautysh",
-			"ts_ls",
 			"prettier",
 		}, -- don't forget to add linters, formatters, etc to lsp/none-ls.lua as well
 	},
