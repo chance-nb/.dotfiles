@@ -11,3 +11,5 @@
 	defaultBranch = main
 [advice]
 	addIgnoredFile = false
+[push]
+	autoSetupRemote = true

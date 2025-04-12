@@ -42,9 +42,12 @@ if status is-interactive
     abbr -a lg lazygit
     abbr -a gs git status
     abbr -a gc --set-cursor git commit -m \'%\'
+    abbr -a gco git checkout
     abbr -a ga git add
-    abbr -a gp git push
+    abbr -a gP git push
+    abbr -a gp git pull
     abbr -a gd git diff
+    abbr -a gb git branch
 
     abbr -a zj zellij
     abbr -a ze zellij edit
