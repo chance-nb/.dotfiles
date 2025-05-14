@@ -1,18 +1,5 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		event = "BufEnter",
-		version = "*",
-		dependencies = {
-			{ "saadparwaiz1/cmp_luasnip", version = "*" },
-			{ "rafamadriz/friendly-snippets", version = "*" },
-		},
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
-	},
-
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp", version = "*" },
@@ -23,6 +10,7 @@ return {
 			{ "onsails/lspkind.nvim", version = "*" },
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
+
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
@@ -34,27 +22,49 @@ return {
 					end,
 				},
 
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "luasnip" },
+				}, {
+					{ name = "buffer" },
+				}),
+
+				matching = {
+					disallow_fuzzy_matching = false,
+					disallow_fullfuzzy_matching = false,
+					disallow_partial_fuzzy_matching = false,
+					disallow_prefix_unmatching = false,
+					disallow_symbol_nonprefix_matching = true,
+					disallow_partial_matching = true,
+					disallow_exact_matching = true,
 				},
 
 				view = {
-					entries = { name = "custom", selection_order = "near_cursor" },
+					entries = { name = "custom", selection_order = "near_cursor", follow_cursor = true },
 				},
 
-				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					format = lspkind.cmp_format({
 						-- mode = "symbol",
 					}),
 				},
 
-				mapping = cmp.mapping.preset.insert({
+				mapping = {
 					["<C-k>"] = cmp.mapping.scroll_docs(-4),
 					["<C-j>"] = cmp.mapping.scroll_docs(4),
-					["<C-Tab>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
+					["<C-Space>"] = cmp.mapping.complete(),
+
+					-- abort if visible
+					["<Esc>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.abort()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
+					-- confirm completion
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							if luasnip.expandable() then
@@ -67,8 +77,9 @@ return {
 						else
 							fallback()
 						end
-					end),
+					end, { "i", "s" }),
 
+					-- jump forward
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -79,6 +90,7 @@ return {
 						end
 					end, { "i", "s" }),
 
+					-- jump backward
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -88,15 +100,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-				}),
-
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
-					{ name = "luasnip" }, -- For luasnip users.
-				}, {
-					{ name = "buffer" },
-				}),
+				},
 			})
 
 			-- Use buffer source for `/` and `?`
@@ -116,6 +120,19 @@ return {
 					{ name = "cmdline" },
 				}),
 			})
+		end,
+	},
+
+	{
+		"L3MON4D3/LuaSnip",
+		event = "BufEnter",
+		version = "*",
+		dependencies = {
+			{ "saadparwaiz1/cmp_luasnip", version = "*" },
+			{ "rafamadriz/friendly-snippets", version = "*" },
+		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
 }
