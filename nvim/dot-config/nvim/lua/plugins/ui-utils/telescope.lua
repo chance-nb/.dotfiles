@@ -1,4 +1,3 @@
--- fuzzy finder - look below for keybinds
 return {
 	{
 		"nvim-telescope/telescope.nvim",

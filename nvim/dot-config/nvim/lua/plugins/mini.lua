@@ -15,13 +15,16 @@ return {
 		config = function()
 			local sessions = require("mini.sessions")
 			sessions.setup({})
-			vim.keymap.set("n", "<leader>ss", function()
+			vim.keymap.set("n", "<leader>sw", function()
 				local name = vim.fn.input("Save session as: ")
 				sessions.write(name)
 			end, { desc = "save session" })
 			vim.keymap.set("n", "<leader>sl", function()
 				sessions.select("read")
 			end, { desc = "select session to load" })
+			vim.keymap.set("n", "<leader>sd", function()
+				sessions.select("delete")
+			end, { desc = "delete session" })
 		end,
 	},
 
@@ -63,7 +66,7 @@ return {
 				draw = {
 					animation = indentscope.gen_animation.cubic({
 						easing = "in",
-						duration = 100,
+						duration = 80,
 						unit = "total",
 					}),
 				},
@@ -82,7 +85,15 @@ return {
 		end,
 	},
 
-	{ "echasnovski/mini.animate", version = "*", opts = {} },
+	{
+		"echasnovski/mini.animate",
+		version = "*",
+		opts = {
+			resize = {
+				enable = false,
+			},
+		},
+	},
 
 	{ "echasnovski/mini.icons", version = "*", opts = {} },
 
@@ -92,5 +103,5 @@ return {
 
 	{ "echasnovski/mini.pairs", event = "BufEnter", version = "*", opts = {} },
 
-	{ "echasnovski/mini.bracketed", version = "*", opts = {} },
+	-- { "echasnovski/mini.bracketed", version = "*", opts = {} },
 }

@@ -8,12 +8,12 @@ return {
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load() -- technically part of LuaSnip setup but it's convenient here
+			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
 
 	{
-		"hrsh7th/nvim-cmp", -- using newest version since latest stable uses deprecated functions
+		"hrsh7th/nvim-cmp",
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp", version = "*" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
@@ -58,7 +58,7 @@ return {
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							if luasnip.expandable() then
-								luasnip.expand()
+								luasnip.expand({})
 							else
 								cmp.confirm({
 									select = true,

@@ -1,5 +1,5 @@
 return {
-  "folke/lazydev.nvim",
-  version = "*",
-  opts = {}
+	"folke/lazydev.nvim",
+	version = "*",
+	opts = {},
 }

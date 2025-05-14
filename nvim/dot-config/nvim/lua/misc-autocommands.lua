@@ -1,4 +1,4 @@
--- highlight when yanking (copying) text
+-- highlight when yanking
 --  try it with `yap` in normal mode
 --  see `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("textyankpost", {
