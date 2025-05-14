@@ -2,6 +2,10 @@ return {
 	"j-hui/fidget.nvim",
 	version = "*",
 	opts = {
-		-- options
+		notification = {
+			window = {
+				winblend = 0,
+			}
+		}
 	},
 }
