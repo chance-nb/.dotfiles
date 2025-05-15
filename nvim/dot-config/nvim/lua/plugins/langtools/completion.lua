@@ -57,7 +57,7 @@ return {
 
 					-- abort if visible
 					["<Esc>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
+						if cmp.visible() and cmp.get_active_entry() then
 							cmp.abort()
 						else
 							fallback()
@@ -126,6 +126,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		event = "BufEnter",
+		build = "make install_jsregexp",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
