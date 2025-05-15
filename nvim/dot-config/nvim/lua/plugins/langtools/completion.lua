@@ -66,7 +66,7 @@ return {
 
 					-- confirm completion
 					["<CR>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
+						if cmp.visible() and cmp.get_active_entry() then
 							if luasnip.expandable() then
 								luasnip.expand({})
 							else

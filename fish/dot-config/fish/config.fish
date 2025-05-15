@@ -44,10 +44,13 @@ if status is-interactive
     abbr -a gc --set-cursor git commit -m \'%\'
     abbr -a gco git checkout
     abbr -a ga git add
+    abbr -a gap git add --patch
     abbr -a gP git push
     abbr -a gp git pull
     abbr -a gd git diff
+    abbr -a gds git diff --staged
     abbr -a gb git branch
+    abbr -a gl 'git log --all --graph --pretty=format:\'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n\''
 
     abbr -a zj zellij
     abbr -a ze zellij edit
