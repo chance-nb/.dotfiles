@@ -16,8 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 --------------------------------------------------------------------
 
-require("vim-options")
-require("misc-autocommands")
+require("options")
+require("keybinds")
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
@@ -27,5 +27,5 @@ require("lazy").setup({
 		{ import = "plugins.ui-utils" },
 	},
 })
-require("LSPKeybinds")
-require("manim")
+require("misc-funcs")
+require("misc-autocmds")

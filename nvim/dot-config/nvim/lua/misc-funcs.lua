@@ -5,7 +5,6 @@ local function runmanim()
 			uri = vim.uri_from_bufnr(0),
 		},
 	}, function(err, result, _, _)
-
 		if err then
 			vim.notify("LSP error occured: " .. err.message)
 			return
