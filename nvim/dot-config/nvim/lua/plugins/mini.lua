@@ -97,7 +97,6 @@ return {
 
 	{ "echasnovski/mini.icons", version = "*", opts = {} },
 
-	{ "echasnovski/mini.tabline", version = "*", opts = {} },
 
 	{ "echasnovski/mini.starter", version = "*", opts = {} },
 
