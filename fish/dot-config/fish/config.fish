@@ -66,6 +66,10 @@ if status is-interactive
 
     abbr -a v nvim
 
+    abbr -a tm tmux
+    abbr -a ta tmux a
+    abbr -a e edit
+
     abbr -a ic kitty icat
 
     bind  --user \e\e sudope
