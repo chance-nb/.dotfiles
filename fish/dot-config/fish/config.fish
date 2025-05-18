@@ -85,3 +85,4 @@ set -gx LC_ALL "en_GB.UTF-8"
 
 fish_add_path /home/astrid/.spicetify
 fish_add_path ~/.cargo/bin
+fish_add_path ~/.local/bin
