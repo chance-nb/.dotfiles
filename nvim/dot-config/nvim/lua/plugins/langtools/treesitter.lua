@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "master",
 	event = "BufEnter",
 	build = ":TSUpdate",
 	config = function()
