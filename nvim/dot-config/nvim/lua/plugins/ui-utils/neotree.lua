@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -6,37 +7,90 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
+	lazy = false,
 	config = function()
 		local pos = "left"
 		local ntree = require("neo-tree.command")
 		require("neo-tree").setup({
-			window = {
-				mappings = { -- open w/o losing focus
-					["<Tab>"] = function(state)
-						state.commands["open"](state)
-						ntree.execute({ action = "focus" })
+			filesystem = {
+				components = {
+					harpoon_index = function(config, node, _)
+						local harpoon_list = require("harpoon"):list()
+						local path = node:get_id()
+						---@diagnostic disable-next-line: undefined-field
+						local harpoon_key = vim.uv.cwd()
+
+						for i, item in ipairs(harpoon_list.items) do
+							local value = item.value
+							if string.sub(item.value, 1, 1) ~= "/" then
+								value = harpoon_key .. "/" .. item.value
+							end
+
+							if value == path then
+								vim.print(path)
+								return {
+									text = string.format(" ⥤ %d", i),
+									highlight = config.highlight or "NeoTreeDirectoryIcon",
+								}
+							end
+						end
+						return {}
 					end,
-					["<CR>"] = function(state)
-						state.commands["open"](state)
-						ntree.execute({ action = "close" })
-					end,
+				},
+				renderers = {
+					file = {
+						{ "icon" },
+						{ "name", use_git_status_colors = true },
+						{ "harpoon_index" },
+						{ "diagnostics" },
+						{ "git_status", highlight = "NeoTreeDimText" },
+					},
+				},
+				window = {
+					mappings = { -- open w/o losing focus
+						["<Tab>"] = function(state)
+							state.commands["open"](state)
+						end,
+						["<S-Tab>"] = function(state)
+							state.commands["open"](state)
+							ntree.execute({ action = "focus" })
+						end,
+						["<CR>"] = function(state)
+							state.commands["open"](state)
+							ntree.execute({ action = "close" })
+						end,
+					},
 				},
 			},
 			default_component_configs = {
 				git_status = {
 					symbols = {
 						-- Change type
-						added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-						modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+						added = "", -- or "✚"
+						modified = "", -- or ""
 						deleted = "✖", -- this can only be used in the git_status source
 						renamed = "󰁕", -- this can only be used in the git_status source
 						-- Status type
-						untracked = "",
+						untracked = "",
 						ignored = "/",
-						unstaged = "",
+						unstaged = "",
 						staged = "+",
-						conflict = "",
+						conflict = "!",
 					},
+				},
+			},
+			event_handlers = {
+				{
+					event = require("neo-tree.events").NEO_TREE_BUFFER_ENTER,
+					handler = function()
+						vim.cmd("highlight! Cursor blend=100")
+					end,
+				},
+				{
+					event = require("neo-tree.events").NEO_TREE_BUFFER_LEAVE,
+					handler = function()
+						vim.cmd("highlight! Cursor guibg=#5f87af blend=0")
+					end,
 				},
 			},
 		})

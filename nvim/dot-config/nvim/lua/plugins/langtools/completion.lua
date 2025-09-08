@@ -30,6 +30,8 @@ return {
 					{ name = "buffer" },
 				}),
 
+				preselect = cmp.PreselectMode.None,
+
 				matching = {
 					disallow_fuzzy_matching = false,
 					disallow_fullfuzzy_matching = false,

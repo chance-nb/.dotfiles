@@ -16,21 +16,6 @@ return {
 				automatic_enable = true,
 			})
 
-			local servers = require("mason-lspconfig").get_installed_servers()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities() -- for completion
-			local lspconfig = require("lspconfig")
-
-			-- go through all the installed mason packages, set up all the ones that are servers
-			for server_name, package in pairs(servers) do
-				if package.type == "server" then
-					local server_config = lspconfig[server_name]
-					if server_config then
-						server_config.setup({
-							capabilities = capabilities,
-						})
-					end
-				end
-			end
 			-- Keybinds
 			local telescope = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "[g]oto [D]eclaration" })

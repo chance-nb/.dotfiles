@@ -10,7 +10,7 @@ map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 map("x", "gP", '"+P', { desc = "Paste from system clipboard" })
 map("n", "yp", '"0p', { desc = "Put from first yank buffer" })
 
-map("n", "se", "mZ$a;<Esc>`Z", { desc = "Add semicolon at end of line" })
+map("n", "se", "mU$a;<Esc>`U<cmd>delm U<CR>", { desc = "Add semicolon at end of line", silent = true })
 
 -- clear search higlight on esc
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")

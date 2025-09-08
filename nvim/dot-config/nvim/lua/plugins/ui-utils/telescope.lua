@@ -7,7 +7,21 @@ return {
 		},
 		config = function()
 			local telescope = require("telescope")
-			telescope.setup({})
+			telescope.setup({
+				defaults = {
+					selection_strategy = "closest",
+					path_display = { "smart" },
+					mappings = {
+						i = {
+							["<tab>"] = "move_selection_worse",
+							["<s-tab>"] = "move_selection_better",
+						},
+						n = {
+							["<space>"] = "toggle_selection",
+						},
+					},
+				},
+			})
 			telescope.load_extension("ui-select")
 
 			local builtin = require("telescope.builtin")
