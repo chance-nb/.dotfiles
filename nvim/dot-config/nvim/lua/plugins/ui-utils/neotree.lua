@@ -13,6 +13,8 @@ return {
 		local ntree = require("neo-tree.command")
 		require("neo-tree").setup({
 			filesystem = {
+				bind_to_cwd = true,
+				use_libuv_file_watcher = true,
 				components = {
 					harpoon_index = function(config, node, _)
 						local harpoon_list = require("harpoon"):list()

@@ -82,6 +82,7 @@ if status is-interactive
     and fastfetch
 end
 set -gx LC_ALL "en_GB.UTF-8"
+set -gx EDITOR "nvim"
 
 fish_add_path /home/astrid/.spicetify
 fish_add_path ~/.cargo/bin
