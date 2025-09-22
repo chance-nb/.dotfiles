@@ -7,7 +7,7 @@ return {
 			require("mason").setup()
 		end,
 	},
-	{ -- LSPs
+	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		version = "*",
@@ -35,25 +35,6 @@ return {
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[r]e[n]ame" })
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
 				{ desc = "[c]ode [a]ction" })
-		end,
-	},
-	{ -- Formatters
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"williamboman/mason.nvim",
-			"nvimtools/none-ls.nvim",
-		},
-		config = function()
-			require("mason-null-ls").setup({
-				ensure_installed = { "black", "prettier", "stylua", "beautysh" },
-				automatic_installation = false,
-				handlers = {},
-			})
-			require("null-ls").setup({})
-			vim.keymap.set("n", "<leader>fr", function()
-				vim.lsp.buf.format({ async = true })
-			end, { desc = "[f]o[r]mat" })
 		end,
 	},
 }
