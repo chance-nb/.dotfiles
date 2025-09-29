@@ -7,26 +7,6 @@ vim.api.nvim_create_autocmd("textyankpost", {
 	end,
 })
 
--- format on write
-vim.g.autofmt = false
-vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "format on write",
-	callback = function()
-		if vim.g.autofmt then
-			vim.lsp.buf.format({ async = true })
-		end
-	end,
-})
--- convenience func to toggle autofmt
-vim.api.nvim_create_user_command("AFmt", function()
-	vim.g.autofmt = not vim.g.autofmt
-	if vim.g.autofmt then
-		vim.api.nvim_echo({ { "Autoformat toggled on" } }, true, {})
-	else
-		vim.api.nvim_echo({ { "Autoformat toggled off" } }, true, {})
-	end
-end, { desc = "Toggle auto format on write" })
-
 -- close unused buffers
 local id = vim.api.nvim_create_augroup("autoclose-buffers", {
 	clear = false,

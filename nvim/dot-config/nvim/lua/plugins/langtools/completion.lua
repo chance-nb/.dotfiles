@@ -23,12 +23,24 @@ return {
 				},
 
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
-					{ name = "luasnip" },
+					{ name = "nvim_lsp_signature_help", },
+					{ name = "nvim_lsp", },
+					{ name = "luasnip", },
 				}, {
 					{ name = "buffer" },
 				}),
+
+				sorting = {
+					priority_weight = 10,
+					comparators = {
+						cmp.config.compare.recently_used,
+						cmp.config.compare.score,
+						cmp.config.compare.order,
+						cmp.config.compare.kind,
+						cmp.config.compare.scopes,
+						cmp.config.compare.sort_text
+					}
+				},
 
 				preselect = cmp.PreselectMode.None,
 
