@@ -89,9 +89,8 @@ return {
 		"echasnovski/mini.animate",
 		version = "*",
 		opts = {
-			resize = {
-				enable = false,
-			},
+			resize = { enable = false },
+			scroll = { enable = false }
 		},
 	},
 

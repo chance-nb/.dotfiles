@@ -44,3 +44,26 @@ opt.splitright = true
 opt.wrap = false -- dont wrap lines, ew
 opt.ruler = false -- no cursor pos in command line
 opt.signcolumn = "yes"
+
+-- LSP Behaviour
+
+-- format function to hide virtual text on current line since .current_line = false doesn't work for whatever reason
+---@param diagnostic vim.Diagnostic
+local function virtual_text_format(diagnostic)
+	if vim.fn.line '.' == diagnostic.lnum + 1 then
+		return nil
+	end
+
+	return diagnostic.message
+end
+
+vim.diagnostic.config({
+	severity_sort = true,
+	virtual_text = {
+		current_line = false,
+		format = virtual_text_format,
+	},
+	virtual_lines = {
+		current_line = true,
+	}
+})

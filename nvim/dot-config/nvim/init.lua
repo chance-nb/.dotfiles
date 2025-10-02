@@ -27,6 +27,5 @@ require("lazy").setup({
 		{ import = "plugins.ui-utils" },
 	},
 })
-require("lsp-configs")
 require("misc-funcs")
 require("misc-autocmds")
