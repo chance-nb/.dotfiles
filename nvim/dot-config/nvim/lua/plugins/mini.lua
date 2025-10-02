@@ -94,9 +94,9 @@ return {
 		},
 	},
 
-	{ "echasnovski/mini.icons", version = "*", opts = {} },
+	{ "echasnovski/mini.icons",   version = "*",      opts = {} },
 
-	{ "echasnovski/mini.starter", version = "*", opts = {} },
+	{ "echasnovski/mini.starter", version = "*",      opts = {} },
 
-	{ "echasnovski/mini.pairs", event = "BufEnter", version = "*", opts = {} },
+	{ "echasnovski/mini.pairs",   event = "BufEnter", version = "*", opts = {} },
 }

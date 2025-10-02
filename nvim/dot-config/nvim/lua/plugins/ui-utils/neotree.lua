@@ -42,10 +42,10 @@ return {
 				renderers = {
 					file = {
 						{ "icon" },
-						{ "name", use_git_status_colors = true },
+						{ "name",         use_git_status_colors = true },
 						{ "harpoon_index" },
 						{ "diagnostics" },
-						{ "git_status", highlight = "NeoTreeDimText" },
+						{ "git_status",   highlight = "NeoTreeDimText" },
 					},
 				},
 				window = {

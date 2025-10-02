@@ -41,8 +41,8 @@ opt.undofile = true
 opt.mouse = "a"
 opt.splitbelow = true -- split windows nicerly
 opt.splitright = true
-opt.wrap = false -- dont wrap lines, ew
-opt.ruler = false -- no cursor pos in command line
+opt.wrap = false      -- dont wrap lines, ew
+opt.ruler = false     -- no cursor pos in command line
 opt.signcolumn = "yes"
 
 -- LSP Behaviour

@@ -2,12 +2,12 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp", version = "*" },
+			{ "hrsh7th/cmp-nvim-lsp",                version = "*" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
-			{ "hrsh7th/cmp-buffer", version = "*" },
-			{ "hrsh7th/cmp-path", version = "*" },
-			{ "hrsh7th/cmp-cmdline", version = "*" },
-			{ "onsails/lspkind.nvim", version = "*" },
+			{ "hrsh7th/cmp-buffer",                  version = "*" },
+			{ "hrsh7th/cmp-path",                    version = "*" },
+			{ "hrsh7th/cmp-cmdline",                 version = "*" },
+			{ "onsails/lspkind.nvim",                version = "*" },
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 
@@ -143,7 +143,7 @@ return {
 		build = "make install_jsregexp",
 		version = "*",
 		dependencies = {
-			{ "saadparwaiz1/cmp_luasnip", version = "*" },
+			{ "saadparwaiz1/cmp_luasnip",     version = "*" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 		config = function()
