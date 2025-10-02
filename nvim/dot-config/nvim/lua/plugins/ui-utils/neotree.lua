@@ -49,11 +49,11 @@ return {
 					},
 				},
 				window = {
-					mappings = { -- open w/o losing focus
-						["<Tab>"] = function(state)
+					mappings = {
+						["<S-Tab>"] = function(state)
 							state.commands["open"](state)
 						end,
-						["<S-Tab>"] = function(state)
+						["<Tab>"] = function(state)
 							state.commands["open"](state)
 							ntree.execute({ action = "focus" })
 						end,
@@ -98,12 +98,21 @@ return {
 		})
 
 		vim.keymap.set("n", "<leader>ee", function()
-			ntree.execute({
-				action = "focus",
-				source = "filesystem",
-				position = pos,
-				reveal = true,
-			})
+			if string.match(vim.api.nvim_buf_get_name(0), "^ministarter:") ~= nil then
+				ntree.execute({
+					action = "focus",
+					source = "filesystem",
+					position = pos,
+					reveal = false,
+				})
+			else
+				ntree.execute({
+					action = "focus",
+					source = "filesystem",
+					position = pos,
+					reveal = true,
+				})
+			end
 		end, { desc = "Open filesystem" })
 
 		vim.keymap.set("n", "<leader>eb", function()
