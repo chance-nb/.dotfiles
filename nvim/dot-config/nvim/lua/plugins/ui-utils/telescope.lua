@@ -20,6 +20,9 @@ return {
 							["<space>"] = "toggle_selection",
 						},
 					},
+					preview = {
+						treesitter = false -- until treesitter 1.0 rewrite is accomodated
+					},
 				},
 			})
 			telescope.load_extension("ui-select")

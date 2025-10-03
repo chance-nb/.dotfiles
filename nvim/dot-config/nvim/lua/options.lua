@@ -11,7 +11,6 @@ opt.relativenumber = true
 
 -- folding
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldminlines = 10
 opt.foldnestmax = 6
 opt.foldlevelstart = 2

@@ -1,18 +1,19 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	branch = "main",
 	event = "BufEnter",
 	build = ":TSUpdate",
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "lua", "bash" },
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
-			incremental_selection = { enable = true },
-			ignore_install = {},
-			modules = {},
-			sync_install = false,
+		local treesitter = require("nvim-treesitter")
+		treesitter.setup()
+		treesitter.install { "lua", "bash" }
+		vim.api.nvim_create_autocmd('FileType', {
+			pattern = treesitter.get_installed(),
+			callback = function()
+				vim.treesitter.start()
+				vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
 		})
 	end,
 }
