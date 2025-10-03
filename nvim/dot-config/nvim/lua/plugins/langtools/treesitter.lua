@@ -60,5 +60,14 @@ return {
 				require("nvim-treesitter-textobjects.swap").swap_next "@parameter.outer"
 			end)
 		end
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {
+			max_lines = 6,
+			multiline_threshold = 6,
+			min_window_height = 10
+		}
 	}
 }
