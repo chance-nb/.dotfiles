@@ -72,7 +72,7 @@ if status is-interactive
 
     abbr -a ic kitty icat
 
-    bind  --user \e\e sudope
+    bind  --user ctrl-s sudope
     set fish_escape_delay_ms 200
 
     abbr --set-cursor -a cg "cd ~/.config/%"
