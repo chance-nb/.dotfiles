@@ -8,5 +8,5 @@ else if test $id = "arch";
 else
     echo "Couldn't find distro package manager"
 end
-flatpak update
+flatpak update --assumeyes
 end

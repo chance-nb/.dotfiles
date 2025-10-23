@@ -37,6 +37,7 @@ opt.scrolloff = 8
 opt.breakindent = true
 opt.cursorline = true
 opt.undofile = true
+-- opt.undodir = "~/.undofiles/"
 opt.mouse = "a"
 opt.splitbelow = true -- split windows nicerly
 opt.splitright = true
@@ -49,7 +50,8 @@ opt.signcolumn = "yes"
 -- format function to hide virtual text on current line since .current_line = false doesn't work for whatever reason
 ---@param diagnostic vim.Diagnostic
 local function virtual_text_format(diagnostic)
-	if vim.fn.line '.' == diagnostic.lnum + 1 then
+	local line = vim.fn.line '.'
+	if diagnostic.lnum + 1 <= line and line <= diagnostic.end_lnum + 1 then
 		return nil
 	end
 

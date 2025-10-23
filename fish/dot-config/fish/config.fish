@@ -6,6 +6,7 @@ if status is-interactive
     [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
 
     set fish_greeting # disable fish greeting
+    fzf_configure_bindings --directory="ctrl-f" --history="ctrl-h" --variables="ctrl-shift-V"
 
     alias ":3"="nyancat && cli-pride-flags trans --use-flag-height && echo :3"
     alias mewo=nyancat
@@ -34,8 +35,11 @@ if status is-interactive
 
     alias dir='dir --color=auto -F'
     alias grep='grep --color=auto'
-    alias update-grub='sudo grub2-mkconfig -o /boot/grub/grub.cfg'
-    alias ua=' flatpak update --assumeyes && yay -Syu --answerclean n --answerdiff n --answeredit n --answerupgrade y'
+
+    zoxide init --cmd cd fish | source
+
+
+    abbr -a  update-grub 'sudo grub2-mkconfig -o /boot/grub/grub.cfg'
 
     abbr -a c "clear && fastfetch"
 
@@ -79,6 +83,7 @@ if status is-interactive
     abbr --set-cursor -a ce "nvim ~/.config/%"
 
     set -q KITTY_PID
+
     and fastfetch
 end
 set -gx LC_ALL "en_GB.UTF-8"

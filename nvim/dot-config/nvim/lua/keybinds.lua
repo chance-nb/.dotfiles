@@ -8,7 +8,10 @@ vim.g.maplocaleader = " "
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 map("x", "gP", '"+P', { desc = "Paste from system clipboard" })
-map("n", "yp", '"0p', { desc = "Put from first yank buffer" })
+map("n", "yp", '"0p', { desc = "Paste from first register" })
+map("n", "gyp", function()
+	vim.fn.setreg("+", vim.fn.getreg("0"))
+end, { desc = "Put first register into system clipboard" })
 
 map("n", "se", "mU$a;<Esc>`U<cmd>delm U<CR>", { desc = "Add semicolon at end of line", silent = true })
 
