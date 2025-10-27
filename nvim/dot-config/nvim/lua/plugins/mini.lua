@@ -85,7 +85,7 @@ return {
 		end,
 	},
 
-	{
+	vim.g.neovide and {} or {
 		"echasnovski/mini.animate",
 		version = "*",
 		opts = {
