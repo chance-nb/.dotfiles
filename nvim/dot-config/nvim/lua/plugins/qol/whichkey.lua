@@ -3,6 +3,8 @@ return {
 	version = "*",
 	event = "VimEnter",
 	config = function()
-		require("which-key").setup()
+		require("which-key").setup({
+			preset = "helix",
+		})
 	end,
 }

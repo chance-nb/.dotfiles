@@ -45,6 +45,9 @@ opt.wrap = false      -- dont wrap lines, ew
 opt.ruler = false     -- no cursor pos in command line
 opt.signcolumn = "yes"
 
+-- fonts
+vim.o.guifont = "Jetbrains Mono:h11"
+
 -- LSP Behaviour
 
 -- format function to hide virtual text on current line since .current_line = false doesn't work for whatever reason

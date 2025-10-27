@@ -9,26 +9,6 @@ return {
 	},
 
 	{
-		"echasnovski/mini.sessions",
-		event = "BufEnter",
-		version = "*",
-		config = function()
-			local sessions = require("mini.sessions")
-			sessions.setup({})
-			vim.keymap.set("n", "<leader>sw", function()
-				local name = vim.fn.input("Save session as: ")
-				sessions.write(name)
-			end, { desc = "save session" })
-			vim.keymap.set("n", "<leader>sl", function()
-				sessions.select("read")
-			end, { desc = "select session to load" })
-			vim.keymap.set("n", "<leader>sd", function()
-				sessions.select("delete")
-			end, { desc = "delete session" })
-		end,
-	},
-
-	{
 		"echasnovski/mini.move",
 		event = "BufEnter",
 		version = "*",
@@ -50,31 +30,6 @@ return {
 	},
 
 	{
-		"echasnovski/mini.cursorword",
-		event = "BufEnter",
-		opts = {},
-		version = "*",
-	},
-
-	{
-		"echasnovski/mini.indentscope",
-		event = "BufEnter",
-		version = "*",
-		config = function()
-			local indentscope = require("mini.indentscope")
-			indentscope.setup({
-				draw = {
-					animation = indentscope.gen_animation.cubic({
-						easing = "in",
-						duration = 80,
-						unit = "total",
-					}),
-				},
-			})
-		end,
-	},
-
-	{
 		"echasnovski/mini.jump",
 		event = "BufEnter",
 		version = "*",
@@ -85,18 +40,56 @@ return {
 		end,
 	},
 
-	vim.g.neovide and {} or {
-		"echasnovski/mini.animate",
+	{ "echasnovski/mini.icons", version = "*", opts = {} },
+
+	{
+		"echasnovski/mini.pairs",
+		event = "BufEnter",
 		version = "*",
 		opts = {
-			resize = { enable = false },
-			scroll = { enable = false }
+			modes = { insert = true, command = true, terminal = false },
+			skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+			skip_unbalanced = true,
+			markdown = true,
 		},
 	},
 
-	{ "echasnovski/mini.icons",   version = "*",      opts = {} },
-
-	{ "echasnovski/mini.starter", version = "*",      opts = {} },
-
-	{ "echasnovski/mini.pairs",   event = "BufEnter", version = "*", opts = {} },
+	{
+		"nvim-mini/mini.ai",
+		event = "VeryLazy",
+		dependencies = {
+			{ "nvim-mini/mini.extra", version = "*" },
+		},
+		-- taken from LazyVim
+		config = function()
+			local ai = require("mini.ai")
+			require("mini.ai").setup({
+				n_lines = 500,
+				custom_textobjects = {
+					o = ai.gen_spec.treesitter({ -- code block
+						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+					}),
+					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),  -- class
+					s = ai.gen_spec.treesitter({ a = "@assignment.rhs", i = "@assignment.rhs" }),
+					-- al = ai.gen_spec.treesitter({ a = "@assignment.lhs", i = "@assignment.lhs" }),
+					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+					d = { "%f[%d]%d+" },                                           -- digits
+					e = {                                                          -- Word with case
+						{
+							"%u[%l%d]+%f[^%l%d]",
+							"%f[%S][%l%d]+%f[^%l%d]",
+							"%f[%P][%l%d]+%f[^%l%d]",
+							"^[%l%d]+%f[^%l%d]",
+						},
+						"^().*()$",
+					},
+					g = require("mini.extra").gen_ai_spec.buffer(),       -- buffer
+					u = ai.gen_spec.function_call(),                      -- u for "Usage"
+					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+				},
+			})
+		end,
+	},
 }

@@ -2,12 +2,12 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp",                version = "*" },
+			{ "hrsh7th/cmp-nvim-lsp", version = "*" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help", version = "*" },
-			{ "hrsh7th/cmp-buffer",                  version = "*" },
-			{ "hrsh7th/cmp-path",                    version = "*" },
-			{ "hrsh7th/cmp-cmdline",                 version = "*" },
-			{ "onsails/lspkind.nvim",                version = "*" },
+			{ "hrsh7th/cmp-buffer", version = "*" },
+			{ "hrsh7th/cmp-path", version = "*" },
+			{ "hrsh7th/cmp-cmdline", version = "*" },
+			{ "onsails/lspkind.nvim", version = "*" },
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 
@@ -23,9 +23,8 @@ return {
 				},
 
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp_signature_help", },
-					{ name = "nvim_lsp", },
-					{ name = "luasnip", },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 				}, {
 					{ name = "buffer" },
 				}),
@@ -38,8 +37,8 @@ return {
 						cmp.config.compare.order,
 						cmp.config.compare.kind,
 						cmp.config.compare.scopes,
-						cmp.config.compare.sort_text
-					}
+						cmp.config.compare.sort_text,
+					},
 				},
 
 				preselect = cmp.PreselectMode.None,
@@ -143,7 +142,7 @@ return {
 		build = "make install_jsregexp",
 		version = "*",
 		dependencies = {
-			{ "saadparwaiz1/cmp_luasnip",     version = "*" },
+			{ "saadparwaiz1/cmp_luasnip", version = "*" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 		config = function()

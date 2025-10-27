@@ -16,25 +16,28 @@ return {
 				automatic_enable = true,
 			})
 
+			vim.lsp.enable("glsl_analyzer")
+
 			-- Keybinds
-			local telescope = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "[g]oto [D]eclaration" })
-			vim.keymap.set("n", "<leader>gd", telescope.lsp_definitions, { desc = "[g]oto [d]efinition" })
-			vim.keymap.set("n", "<leader>gi", telescope.lsp_implementations,
-				{ desc = "[g]oto [i]mplementation" })
-			vim.keymap.set("n", "<leader>gr", telescope.lsp_references, { desc = "[g]oto [r]eferences" })
-			vim.keymap.set("n", "<leader>gt", telescope.lsp_type_definitions,
-				{ desc = "[g]oto [t]ype definition" })
-			vim.keymap.set("n", "<leader>gT", vim.lsp.buf.typehierarchy,
-				{ desc = "show [T]ype hierarchy" })
-			vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float,
-				{ desc = "show [D]iagnostics at cursor" })
-			vim.keymap.set({ "n", "c" }, "<leader>fs", telescope.lsp_document_symbols,
-				{ desc = "[f]ind [s]ymbols in document" })
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "show hover information" })
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[r]e[n]ame" })
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
-				{ desc = "[c]ode [a]ction" })
+			local map = vim.keymap.set
+
+			-- stylua: ignore start
+			map("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
+			map("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
+			map("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
+			map("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
+			map("n", "gty", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
+			map("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "C[a]lls Incoming" })
+			map("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "C[a]lls Outgoing" })
+			map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
+			map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+			-- stylua: ignore end
+
+			map("n", "<leader>gT", vim.lsp.buf.typehierarchy, { desc = "show [T]ype hierarchy" })
+			map("n", "<leader>D", vim.diagnostic.open_float, { desc = "show [D]iagnostics at cursor" })
+			map("n", "K", vim.lsp.buf.hover, { desc = "show hover information" })
+			map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[r]e[n]ame" })
+			map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[c]ode [a]ction" })
 		end,
 	},
 }

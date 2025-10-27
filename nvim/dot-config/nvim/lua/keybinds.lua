@@ -33,3 +33,6 @@ map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 -- ctrl+s to save, ctrl+q to quit
 map("n", "<C-s>", "<cmd>wa<CR>")
 map("n", "<C-q>", "<cmd>qa<CR>")
+
+-- ctrl+v in insert mode
+map("i", "<C-v>","<cmd>put +<CR>")
