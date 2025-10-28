@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-field
+---@diagnostic disable: undefined-global
 return {
 	{
 		"williamboman/mason.nvim",
@@ -19,25 +20,48 @@ return {
 			vim.lsp.enable("glsl_analyzer")
 
 			-- Keybinds
-			local map = vim.keymap.set
+			local map = Snacks.keymap.set
 
 			-- stylua: ignore start
-			map("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
-			map("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
-			map("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
-			map("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
-			map("n", "gty", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
-			map("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "C[a]lls Incoming" })
-			map("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "C[a]lls Outgoing" })
-			map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-			map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+			map("n", "gd", function() Snacks.picker.lsp_definitions() end,
+				{ desc = "Goto Definition", lsp = { method = "textDocument/definition" } })
+			map("n", "gD", function() Snacks.picker.lsp_declarations() end,
+				{ desc = "Goto Declaration", lsp = { method = "textDocument/declaration" } })
+			map("n", "gr", function() Snacks.picker.lsp_references() end,
+				{ nowait = true, desc = "References", lsp = { method = "textDocument/references" } })
+			map("n", "gI", function() Snacks.picker.lsp_implementations() end,
+				{ desc = "Goto Implementation", lsp = { method = "textDocument/implementation" } })
+			map("n", "gty", function() Snacks.picker.lsp_type_definitions() end,
+				{ desc = "Goto T[y]pe Definition", lsp = { method = "textDocument/typeDefinition" } })
+			map("n", "gci", function() Snacks.picker.lsp_incoming_calls() end,
+				{ desc = "Calls Incoming", lsp = { method = "textDocument/prepareCallHierarchy" } })
+			map("n", "gco", function() Snacks.picker.lsp_outgoing_calls() end,
+				{ desc = "Calls Outgoing", lsp = { method = "textDocument/prepareCallHierarchy" } })
+			map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end,
+				{ desc = "LSP Symbols", lsp = { method = "textDocument/documentSymbol" } })
+			map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,
+				{ desc = "LSP Workspace Symbols", lsp = { method = "workspace/symbol" } })
 			-- stylua: ignore end
 
-			map("n", "<leader>gT", vim.lsp.buf.typehierarchy, { desc = "show [T]ype hierarchy" })
 			map("n", "<leader>D", vim.diagnostic.open_float, { desc = "show [D]iagnostics at cursor" })
-			map("n", "K", vim.lsp.buf.hover, { desc = "show hover information" })
-			map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[r]e[n]ame" })
-			map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[c]ode [a]ction" })
+			map(
+				"n",
+				"K",
+				vim.lsp.buf.hover,
+				{ desc = "show hover information", lsp = { method = "textDocument/hover" } }
+			)
+			map(
+				"n",
+				"<leader>rn",
+				vim.lsp.buf.rename,
+				{ desc = "[r]e[n]ame", lsp = { method = "textDocument/rename" } }
+			)
+			map(
+				{ "n", "v" },
+				"<leader>ca",
+				vim.lsp.buf.code_action,
+				{ desc = "[c]ode [a]ction", lsp = { method = "textDocument/codeAction" } }
+			)
 		end,
 	},
 }

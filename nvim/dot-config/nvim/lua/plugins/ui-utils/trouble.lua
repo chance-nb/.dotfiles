@@ -2,27 +2,44 @@ return {
 	"folke/trouble.nvim",
 	event = "VimEnter",
 	version = "*",
-	opts = {}, -- for default options, refer to the configuration section for custom setup.
+	opts = {
+		win = { position = "right" },
+		open_no_results = true,
+		modes = {
+			symbols = {
+				mode = "lsp_document_symbols",
+				focus = true,
+				filter = function(items)
+					return vim.tbl_filter(function(item)
+						if item.kind == "Field" then
+							return false
+						end
+						return true
+					end, items)
+				end,
+			},
+		},
+	},
 	cmd = "Trouble",
 	keys = {
 		{
 			"<leader>xx",
-			"<cmd>Trouble diagnostics toggle<cr>",
+			"<cmd>Trouble diagnostics toggle win.position=bottom<cr>",
 			desc = "Diagnostics",
 		},
 		{
 			"<leader>xb",
-			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+			"<cmd>Trouble buffer diagnostics toggle win.position=bottom<cr>",
 			desc = "Buffer Diagnostics",
 		},
 		{
 			"<leader>cs",
-			"<cmd>Trouble symbols toggle focus=false<cr>",
+			"<cmd>Trouble symbols toggle<cr>",
 			desc = "[c]ode [s]ymbols",
 		},
 		{
 			"<leader>cl",
-			"<cmd>Trouble lsp toggle focus=true win.position=right<cr>",
+			"<cmd>Trouble lsp toggle focus=true<cr>",
 			desc = "[c]ode [l]sp objects",
 		},
 		{

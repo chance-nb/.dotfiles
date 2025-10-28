@@ -35,4 +35,4 @@ map("n", "<C-s>", "<cmd>wa<CR>")
 map("n", "<C-q>", "<cmd>qa<CR>")
 
 -- ctrl+v in insert mode
-map("i", "<C-v>","<cmd>put +<CR>")
+map("i", "<C-v>", "<C-o>\"+P")

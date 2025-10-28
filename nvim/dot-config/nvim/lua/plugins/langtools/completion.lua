@@ -96,8 +96,6 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.locally_jumpable(1) then
-							luasnip.jump(1)
 						else
 							fallback()
 						end
@@ -107,8 +105,6 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
 						else
 							fallback()
 						end
@@ -147,6 +143,19 @@ return {
 		},
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+			local luasnip = require("luasnip")
+
+			vim.keymap.set({ "i", "s", "n" }, "<S-right>", function()
+				if luasnip.jumpable(1) then
+					luasnip.jump(1)
+				end
+			end)
+			vim.keymap.set({ "i", "s", "n" }, "<S-left>", function()
+				if luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				end
+			end)
 		end,
 	},
 }
