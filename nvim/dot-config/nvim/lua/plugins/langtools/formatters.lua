@@ -21,6 +21,7 @@ return {
 				python = { "black" },
 				sh = { "beautysh" },
 				rust = { "rustfmt" },
+				tex = { "tex-fmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",

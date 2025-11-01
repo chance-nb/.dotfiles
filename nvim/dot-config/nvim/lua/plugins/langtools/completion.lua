@@ -83,14 +83,21 @@ return {
 							if luasnip.expandable() then
 								luasnip.expand({})
 							else
-								cmp.confirm({
-									select = true,
-								})
+								cmp.confirm({})
 							end
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
+					["<C-i>"] = cmp.mapping(function(fallback)
+						if luasnip.expandable() then
+							luasnip.expand({})
+						elseif cmp.visible() then
+							cmp.confirm({ select = true })
+						else
+							fallback()
+						end
+					end),
 
 					-- jump forward
 					["<Tab>"] = cmp.mapping(function(fallback)
@@ -134,28 +141,66 @@ return {
 
 	{
 		"L3MON4D3/LuaSnip",
-		event = "BufEnter",
+		event = "BufRead",
 		build = "make install_jsregexp",
 		version = "*",
 		dependencies = {
 			{ "saadparwaiz1/cmp_luasnip", version = "*" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
+			{
+				"iurimateus/luasnip-latex-snippets.nvim",
+				config = function()
+					require("luasnip-latex-snippets").setup()
+				end,
+			},
 		},
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+			require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "tex" } })
+			require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/luasnippets" } })
 			local luasnip = require("luasnip")
+			luasnip.config.set_config({
+				enable_autosnippets = true,
+			})
 
-			vim.keymap.set({ "i", "s", "n" }, "<S-right>", function()
+			local jump_forward_if_jumpable = function()
 				if luasnip.jumpable(1) then
 					luasnip.jump(1)
 				end
-			end)
-			vim.keymap.set({ "i", "s", "n" }, "<S-left>", function()
+			end
+			vim.keymap.set({ "i", "s", "n" }, "<S-right>", jump_forward_if_jumpable)
+			vim.keymap.set({ "i", "s", "n" }, "<C-n>", jump_forward_if_jumpable)
+
+			local jump_back_if_jumpable = function()
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				end
-			end)
+			end
+			vim.keymap.set({ "i", "s", "n" }, "<S-left>", jump_back_if_jumpable)
+			vim.keymap.set({ "i", "s", "n" }, "<C-p>", jump_back_if_jumpable)
+
+			vim.api.nvim_set_keymap("i", "<C-m>", "<Plug>luasnip-next-choice", {})
+
+			-- taken from LuaSnip Issue #797
+			local untrigger = function()
+				-- get the snippet
+				local snip = luasnip.session.current_nodes[vim.api.nvim_get_current_buf()].parent.snippet
+				-- get its trigger
+				local trig = snip.trigger
+				-- replace that region with the trigger
+				local node_from, node_to = snip.mark:pos_begin_end_raw()
+				vim.api.nvim_buf_set_text(0, node_from[1], node_from[2], node_to[1], node_to[2], { trig })
+				-- reset the cursor-position to ahead the trigger
+				vim.fn.setpos(".", { 0, node_from[1] + 1, node_from[2] + 1 + string.len(trig) })
+			end
+
+			vim.keymap.set({ "i", "s" }, "<c-x>", function()
+				if luasnip.in_snippet() then
+					untrigger()
+					luasnip.unlink_current()
+				end
+			end, {
+				desc = "Undo a snippet",
+			})
 		end,
 	},
 }

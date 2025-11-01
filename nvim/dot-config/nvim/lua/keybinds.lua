@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 -- leader key
 vim.g.mapleader = " "
-vim.g.maplocaleader = " "
+vim.g.maplocalleader = " "
 
 -- yanḱy stuff
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
@@ -35,4 +35,4 @@ map("n", "<C-s>", "<cmd>wa<CR>")
 map("n", "<C-q>", "<cmd>qa<CR>")
 
 -- ctrl+v in insert mode
-map("i", "<C-v>", "<C-o>\"+P")
+map("i", "<C-v>","\"+P")
