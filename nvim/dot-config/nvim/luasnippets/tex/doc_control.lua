@@ -8,10 +8,10 @@ end
 
 return {
 	s(
-		"doctemp",
+		"doctemplate",
 		fmta(
 			[[
-			\documentclass[<>]{<>}
+			\documentclass[<>, <>pt<>]{<>}
 			\usepackage{amsmath}
 			\usepackage{amssymb}
 			\usepackage[<>]{<>}
@@ -20,7 +20,36 @@ return {
 			<>
 			\end{document}
 		]],
-			{ i(2, "a4paper"), i(1, "article"), i(4, "T1"), i(3, "fontenc"), i(0) }
+			{
+				i(2, "a4paper"),
+				i(3, "12"),
+				c(4, { t(""), t(", twocolumn") }),
+				i(1, "article"),
+				i(6, "T1"),
+				i(5, "fontenc"),
+				i(0),
+			}
+		)
+	),
+	s(
+		"letter",
+		fmta(
+			[[
+			\begin{letter}{<>\\<>\\<>}
+			\opening{<>}
+			<>
+			\closing{<>,\\<>}
+			\end{letter}
+		]],
+			{
+				i(1, "Name"),
+				i(2, "Street"),
+				i(3, "City"),
+				i(4),
+				i(0),
+				i(5),
+				i(6),
+			}
 		)
 	),
 	s(

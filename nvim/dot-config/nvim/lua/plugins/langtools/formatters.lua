@@ -22,6 +22,7 @@ return {
 				sh = { "beautysh" },
 				rust = { "rustfmt" },
 				tex = { "tex-fmt" },
+				lua = { "stylua", lsp_format = "never" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",

@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
-		event = "BufEnter",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
 			local treesitter = require("nvim-treesitter")
@@ -24,13 +24,13 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		branch = "main",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		event = "BufRead",
+		event = "BufEnter",
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		event = "BufRead",
+		event = "BufEnter",
 		opts = {
 			max_lines = 6,
 			multiline_threshold = 6,

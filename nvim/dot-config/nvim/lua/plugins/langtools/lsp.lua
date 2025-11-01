@@ -4,7 +4,6 @@ return {
 	{
 		"williamboman/mason.nvim",
 		version = "*",
-		event = "BufEnter",
 		config = function()
 			require("mason").setup()
 		end,
@@ -12,7 +11,6 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
-		event = "BufRead",
 		version = "*",
 		config = function()
 			require("mason-lspconfig").setup({
