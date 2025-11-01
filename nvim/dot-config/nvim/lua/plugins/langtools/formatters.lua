@@ -13,13 +13,18 @@ return {
 				desc = "[f]o[r]mat buffer",
 			},
 		},
+
+		---@module "conform"
+		---@type conform.setupOpts
 		opts = {
 			formatters_by_ft = {
 				python = { "black" },
 				sh = { "beautysh" },
+				rust = { "rustfmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
+				stop_after_first = true,
 			},
 			formatters = {},
 			format_on_save = function(bufnr)

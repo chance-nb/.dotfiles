@@ -1,7 +1,7 @@
 return {
 	{
 		"echasnovski/mini.surround",
-		event = "BufEnter",
+		event = "BufRead",
 		version = "*",
 		opts = {
 			n_lines = 500,
@@ -10,7 +10,7 @@ return {
 
 	{
 		"echasnovski/mini.move",
-		event = "BufEnter",
+		event = "BufRead",
 		version = "*",
 		opts = {
 			mappings = {
@@ -31,7 +31,7 @@ return {
 
 	{
 		"echasnovski/mini.jump",
-		event = "BufEnter",
+		event = "BufRead",
 		version = "*",
 		config = function()
 			require("mini.jump").setup()
@@ -44,7 +44,7 @@ return {
 
 	{
 		"echasnovski/mini.pairs",
-		event = "BufEnter",
+		event = "BufRead",
 		version = "*",
 		opts = {
 			modes = { insert = true, command = true, terminal = false },
@@ -71,12 +71,12 @@ return {
 						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
 					}),
 					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),  -- class
+					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
 					s = ai.gen_spec.treesitter({ a = "@assignment.rhs", i = "@assignment.rhs" }),
 					-- al = ai.gen_spec.treesitter({ a = "@assignment.lhs", i = "@assignment.lhs" }),
 					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-					d = { "%f[%d]%d+" },                                           -- digits
-					e = {                                                          -- Word with case
+					d = { "%f[%d]%d+" }, -- digits
+					e = { -- Word with case
 						{
 							"%u[%l%d]+%f[^%l%d]",
 							"%f[%S][%l%d]+%f[^%l%d]",
@@ -85,8 +85,8 @@ return {
 						},
 						"^().*()$",
 					},
-					g = require("mini.extra").gen_ai_spec.buffer(),       -- buffer
-					u = ai.gen_spec.function_call(),                      -- u for "Usage"
+					g = require("mini.extra").gen_ai_spec.buffer(), -- buffer
+					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 				},
 			})

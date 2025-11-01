@@ -4,6 +4,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		version = "*",
+		event = "BufEnter",
 		config = function()
 			require("mason").setup()
 		end,
@@ -11,6 +12,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
+		event = "BufRead",
 		version = "*",
 		config = function()
 			require("mason-lspconfig").setup({
@@ -44,24 +46,14 @@ return {
 			-- stylua: ignore end
 
 			map("n", "<leader>D", vim.diagnostic.open_float, { desc = "show [D]iagnostics at cursor" })
-			map(
-				"n",
-				"K",
-				vim.lsp.buf.hover,
-				{ desc = "show hover information", lsp = { method = "textDocument/hover" } }
-			)
+			map("n", "K", vim.lsp.buf.hover, { desc = "show hover information" })
 			map(
 				"n",
 				"<leader>rn",
 				vim.lsp.buf.rename,
 				{ desc = "[r]e[n]ame", lsp = { method = "textDocument/rename" } }
 			)
-			map(
-				{ "n", "v" },
-				"<leader>ca",
-				vim.lsp.buf.code_action,
-				{ desc = "[c]ode [a]ction", lsp = { method = "textDocument/codeAction" } }
-			)
+			map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[c]ode [a]ction" })
 		end,
 	},
 }

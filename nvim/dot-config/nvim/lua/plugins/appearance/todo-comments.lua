@@ -1,7 +1,7 @@
 -- highlights certain strings in comments
 return {
 	"folke/todo-comments.nvim",
-	event = "BufEnter",
+	event = "BufRead",
 	version = "*",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {},

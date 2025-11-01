@@ -23,10 +23,14 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		branch = "main",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		event = "BufRead",
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		event = "BufRead",
 		opts = {
 			max_lines = 6,
 			multiline_threshold = 6,

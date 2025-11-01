@@ -5,6 +5,7 @@ return {
 	config = function()
 		local snacks = require("snacks")
 		snacks.setup({
+			animate = { enabled = not vim.g.neovide },
 			bigfile = { enabled = true },
 			explorer = { enabled = true, replace_netrw = true },
 			indent = { enabled = true },
@@ -67,6 +68,7 @@ return {
 		{ "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
 		{ "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
 		{ "<leader>e",       function() Snacks.explorer() end,                                       desc = "File Explorer" },
+		{ "<leader>rf",      function() Snacks.explorer.reveal({ buf = 0 }) end,                     desc = "Reveal File in Explorer" },
 		-- find
 		{ "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
 		{ "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },

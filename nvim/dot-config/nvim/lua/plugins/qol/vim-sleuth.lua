@@ -2,4 +2,5 @@
 return {
 	"tpope/vim-sleuth",
 	version = "*",
+	event = "BufRead",
 }
