@@ -1,0 +1,27 @@
+[altgr+control]
+a = α
+b = β
+g = γ
+d = δ
+e = ε
+t = θ
+l = λ
+m = μ
+p = π
+s = σ
+i = φ
+w = ω
+
+[shift+altgr+control]
+a = Α
+b = Β
+g = Γ
+d = Δ
+e = Ε
+t = Θ
+l = Λ
+m = Μ
+p = Π
+s = Σ
+i = Φ
+w = Ω

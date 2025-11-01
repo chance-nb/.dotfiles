@@ -1,6 +1,6 @@
 @define-color dark-slate-gray #2c423f;
 @define-color majorelle-blue #6e44ff;
-@define-color background #331e36;
+@define-color background rgba(77, 26, 102, 1.0);
 @define-color highlight #dd7373;
 @define-color text #b892ff;
 
@@ -12,7 +12,7 @@
 }
 
 window#waybar {
-  background-color: rgba(77, 26, 102, 0.12);
+  background-color: rgba(20, 20, 20, 1.0);
   color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -22,7 +22,7 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-.modules-right > widget > * {
+.modules-right>widget>* {
   margin: 6px;
 }
 
@@ -65,8 +65,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd {
-}
+#mpd {}
 
 #workspaces {
   /* background-color: @background; */
