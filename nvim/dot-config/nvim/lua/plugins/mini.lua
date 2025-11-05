@@ -44,7 +44,7 @@ return {
 
 	{
 		"echasnovski/mini.pairs",
-		event = "BufRead",
+		event = "BufEnter",
 		version = "*",
 		opts = {
 			modes = { insert = true, command = true, terminal = false },

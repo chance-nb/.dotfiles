@@ -29,11 +29,22 @@ return {
 						{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
 						{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
 						{ icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-						{ icon = " ", key = "s", desc = "Select Session", action = ":lua require('persistence').select()" },
+						{ icon = " ", key = "s", desc = "Select Session", action = ":AutoSession search" },
 						{ icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
 						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-					}
-				}
+					},
+					header = [[
+                           ▄▄█████▄▄                             
+                         ▄██▀   ▀▀▀██▄                           
+████████     ██████     ██▀         ███  ██      ██ ██ ████  ██  
+██      ██ ██      ██  ██   ⌠ΩΩ      ▀██ ██      ██    ██  ██  ██
+██      ██ ██████████  ██▄ │   ΩΩ     ██ ██      ██ ██ ██  ██  ██
+██      ██ ██        ▄█▀██/  ___⌡   ▄██    ██  ██   ██ ██      ██
+██      ██   ██████  █▄▀▄▀██/    ▄▄██▀       ██     ██ ██      ██
+                     ▀██▄▀▄▀██████▀▀                             
+                       ▀██▄█▀                                    
+]],
+				},
 			},
 			picker = {
 				enabled = true,
