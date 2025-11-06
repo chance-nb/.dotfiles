@@ -15,6 +15,10 @@ return {
 					action = "closeopen",
 					pair = "$$",
 				})
+				vim.keymap.set({ "o", "x" }, "am", "<Plug>vimtex-a$", { buffer = true })
+				vim.keymap.set({ "o", "x" }, "im", "<Plug>vimtex-i$", { buffer = true })
+				vim.keymap.set({ "o", "x" }, "ii", "<Plug>vimtex-im", { buffer = true })
+				vim.keymap.set({ "o", "x" }, "ai", "<Plug>vimtex-am", { buffer = true })
 			end,
 		})
 	end,

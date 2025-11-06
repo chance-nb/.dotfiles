@@ -46,9 +46,11 @@ opt.ruler = false -- no cursor pos in command line
 opt.signcolumn = "yes"
 
 -- fonts
-vim.o.guifont = "Jetbrains Mono:h11"
+opt.guifont = "Jetbrains Mono:h11"
 
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.conceallevel = 1
+opt.concealcursor = "n"
 
 -- LSP Behaviour
 
