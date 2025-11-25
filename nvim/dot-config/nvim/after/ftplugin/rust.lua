@@ -49,10 +49,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		end, { desc = "structural search and replace" })
 
 		vim.api.nvim_create_user_command("Bacon", function()
-			local buf = vim.api.nvim_create_buf(true, false)
+			local buf = vim.api.nvim_create_buf(false, true)
 			vim.api.nvim_open_win(buf, false, { win = -1, split = "right", width = math.floor(vim.go.columns / 3) })
 			vim.api.nvim_buf_call(buf, function()
 				vim.cmd("terminal bacon")
+				vim.cmd("set filetype=bacon")
+				vim.cmd("set nobuflisted")
 			end)
 		end, { desc = "Open Bacon" })
 
