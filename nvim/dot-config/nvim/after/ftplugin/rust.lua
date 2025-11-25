@@ -47,5 +47,15 @@ vim.api.nvim_create_autocmd("FileType", {
 		map("n", "<leader>sr", function()
 			vim.cmd.RustLsp({ "ssr" })
 		end, { desc = "structural search and replace" })
+
+		vim.api.nvim_create_user_command("Bacon", function()
+			local buf = vim.api.nvim_create_buf(true, false)
+			vim.api.nvim_open_win(buf, false, { win = -1, split = "right", width = math.floor(vim.go.columns / 3) })
+			vim.api.nvim_buf_call(buf, function()
+				vim.cmd("terminal bacon")
+			end)
+		end, { desc = "Open Bacon" })
+
+		map("n", "<leader>rb", "<Cmd>Bacon<CR>", { desc = "Open Bacon" })
 	end,
 })

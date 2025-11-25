@@ -46,11 +46,10 @@ opt.ruler = false -- no cursor pos in command line
 opt.signcolumn = "yes"
 
 -- fonts
-opt.guifont = "Jetbrains Mono:h11"
+opt.guifont = "JetbrainsMono Nerd Font:h11"
 
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 opt.conceallevel = 1
-opt.concealcursor = "n"
 
 -- LSP Behaviour
 

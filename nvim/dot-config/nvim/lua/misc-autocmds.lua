@@ -39,10 +39,10 @@ vim.keymap.set("n", "<leader>bad", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- redraw diagnostics when cursor changes line to hide virtual text
-local last_line = vim.fn.line '.'
-vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+local last_line = vim.fn.line(".")
+vim.api.nvim_create_autocmd({ "CursorMoved" }, {
 	callback = function()
-		local current_line = vim.fn.line '.'
+		local current_line = vim.fn.line(".")
 
 		-- Check if the cursor has moved to a different line
 		if current_line ~= last_line then
