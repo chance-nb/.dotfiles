@@ -10,10 +10,15 @@ local Mwsnip = function(trig, nodes)
 	return s({ trig = trig, condition = math_mode }, nodes)
 end
 
-return {}, {
+return {
+	Mwsnip("unit ms", { t("\\frac{\\text{m}}{\\text{s}}") }),
+	Mwsnip("unit mss", { t("\\frac{\\text{m}}{\\text{s}^2}") }),
+}, {
 	Msnip("_", { t("_{"), i(1), t("}") }),
 	Msnip("^", { t("^{"), i(1), t("}") }),
 	Mwsnip("RR", { t("\\mathbb{R}") }),
 	Mwsnip("NN", { t("\\mathbb{N}") }),
 	Mwsnip("mbb", { t("\\mathbb{"), i(1), t("}") }),
+	Mwsnip("and", { t("\\land ") }),
+	Mwsnip("or", { t("\\lor ") }),
 }

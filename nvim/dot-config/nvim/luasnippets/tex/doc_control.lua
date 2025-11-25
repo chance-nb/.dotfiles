@@ -52,13 +52,16 @@ return {
 			}
 		)
 	),
-	s(
-		{ trig = "usepkg", condition = not math_mode },
-		{ t("\\usepackage"), c(2, {
+	s("usepkg", {
+		t("\\usepackage"),
+		c(2, {
 			t(""),
 			sn(nil, { t("["), i(1), t("]") }),
-		}), t("{"), i(1), t("}") }
-	),
+		}),
+		t("{"),
+		i(1),
+		t("}"),
+	}),
 	s("emph", { t("\\emph{"), i(1), t("}") }),
 	s("italic", { t("\\textit{"), i(1), t("}") }),
 	s("sec", { t("\\section{"), i(1), t("}") }),

@@ -5,7 +5,7 @@ local math_mode = function()
 end
 
 local function glt(lhs, rhs)
-	return s({ trig = "@" .. lhs, wordTrig = false, condition = math_mode }, { t("\\" .. rhs) })
+	return s({ trig = "@" .. lhs, wordTrig = false, condition = math_mode }, { t("\\" .. rhs .. " ") })
 end
 
 return {}, {
