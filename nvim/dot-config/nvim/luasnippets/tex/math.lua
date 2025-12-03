@@ -14,6 +14,7 @@ return {
 	Mwsnip("unit ms", { t("\\frac{\\text{m}}{\\text{s}}") }),
 	Mwsnip("unit mss", { t("\\frac{\\text{m}}{\\text{s}^2}") }),
 }, {
+	Msnip("t_", { t("_{\\text{"), i(1), t("}}") }),
 	Msnip("_", { t("_{"), i(1), t("}") }),
 	Msnip("^", { t("^{"), i(1), t("}") }),
 	Mwsnip("RR", { t("\\mathbb{R}") }),

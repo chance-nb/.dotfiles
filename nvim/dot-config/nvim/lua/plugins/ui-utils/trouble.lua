@@ -11,7 +11,12 @@ return {
 				focus = true,
 				filter = function(items)
 					return vim.tbl_filter(function(item)
-						if item.kind == "Field" then
+						if
+							item.kind == "Field"
+							or item.kind == "Variable"
+							or item.kind == "Constant"
+							or item.kind == "EnumMember"
+						then
 							return false
 						end
 						return true
