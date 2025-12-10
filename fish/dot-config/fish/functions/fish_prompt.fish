@@ -35,5 +35,5 @@ function fish_prompt --description 'Write out the prompt'
     set -lx __fish_git_prompt_showcolorhints true
 
     echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_git_prompt) $normal ' ' $prompt_status
-    echo -n -s $status_color $suffix ' ' $normal
+    echo -n -s (fish_default_mode_prompt)$status_color $suffix ' ' $normal
 end
