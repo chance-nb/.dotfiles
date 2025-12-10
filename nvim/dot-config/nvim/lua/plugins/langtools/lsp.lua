@@ -43,6 +43,10 @@ return {
 				{ desc = "LSP Workspace Symbols", lsp = { method = "workspace/symbol" } })
 			-- stylua: ignore end
 
+			vim.lsp.inlay_hint.enable(true)
+			map("n", "<leader>i", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+			end, { desc = "Toggle Inlay Hints" })
 			map("n", "<leader>D", vim.diagnostic.open_float, { desc = "show [D]iagnostics at cursor" })
 			map("n", "K", vim.lsp.buf.hover, { desc = "show hover information" })
 			map(
@@ -51,7 +55,15 @@ return {
 				vim.lsp.buf.rename,
 				{ desc = "[r]e[n]ame", lsp = { method = "textDocument/rename" } }
 			)
-			map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "[c]ode [a]ction" })
+		end,
+	},
+
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			local ap = require("actions-preview")
+			ap.setup({})
+			Snacks.keymap.set({ "n", "v" }, "<leader>ca", ap.code_actions, { desc = "[c]ode [a]ction" })
 		end,
 	},
 }
