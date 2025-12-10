@@ -2,11 +2,24 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "rust" },
 	callback = function(event)
 		local map = vim.keymap.set
+
 		-- overrides for rustaceanvim-specific actions
-		map("n", "K", "", { buffer = event.buf, silent = true })
+		map({ "n", "v" }, "K", "")
 		map("n", "K", function()
 			vim.cmd.RustLsp({ "hover", "actions" })
-		end, { silent = true, buffer = event.buf })
+		end)
+		map("v", "K", function()
+			vim.cmd.RustLsp({ "hover", "range" })
+		end)
+
+		map({ "n", "v" }, "J", "")
+		map({ "n", "v" }, "J", function()
+			vim.cmd.RustLsp("joinLines")
+		end, { buffer = event.buf, silent = true })
+
+		map("n", "<leader>rp", function()
+			vim.cmd.RustLsp({ "parentModule" })
+		end, { desc = "go to parent module" })
 
 		map("n", "<leader>rt", function()
 			vim.cmd.RustLsp({ "testables" })
@@ -55,6 +68,7 @@ vim.api.nvim_create_autocmd("FileType", {
 				vim.cmd("terminal bacon")
 				vim.cmd("set filetype=bacon")
 				vim.cmd("set nobuflisted")
+				vim.keymap.set({ "n", "t" }, "q", "<cmd>q<CR>", { buffer = buf })
 			end)
 		end, { desc = "Open Bacon" })
 
