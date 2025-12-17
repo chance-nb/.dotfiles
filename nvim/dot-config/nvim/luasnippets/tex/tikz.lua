@@ -7,7 +7,7 @@ local function in_env(env)
 end
 
 local function TZwSnip(lhs, rhs)
-	return s({ trig = lhs, condition = in_env }, rhs)
+	return s({ trig = lhs, condition = in_env("tikzpicture"), word_trig = true }, rhs)
 end
 local function TZSnip(lhs, rhs)
 	return s({ trig = lhs, condition = in_env, word_trig = false }, rhs)
@@ -33,6 +33,13 @@ return {
 		i(4, "blue"),
 		t("] "),
 	}),
+	TZwSnip("draw", {
+		t("\\draw"),
+		c(1, { t(" "), sn(nil, { t("["), i(1, ""), t("] ") }) }),
+		t(" "),
+		coord(2),
+	}),
+	TZwSnip("fill", { t("\\fill["), i(1, "blue!40!white"), t("] "), coord(2) }),
 	TZwSnip("rectangle", { t(" rectangle "), coord(2), t(";") }),
 	TZwSnip("parabola", { t(" parabola "), coord(2), t(";") }),
 	TZwSnip("circle", { t(" circle "), t("("), i(2, "3cm"), t(");") }),
@@ -85,12 +92,5 @@ return {
 	),
 }, {
 	TZwSnip("cd", { coord(1) }),
-	TZwSnip("lin", { t("-- ("), i(1, "0,0"), t(") ") }),
-	TZwSnip("draw", {
-		t("\\draw"),
-		c(1, { t(" "), sn(nil, { t("["), i(1, ""), t("] ") }) }),
-		t(" "),
-		coord(2),
-	}),
-	TZwSnip("fill", { t("\\fill["), i(1, "blue!40!white"), t("] "), coord(2) }),
+	TZwSnip("ln", { t("-- ("), i(1, "0,0"), t(") ") }),
 }
